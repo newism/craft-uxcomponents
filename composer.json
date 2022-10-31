@@ -1,0 +1,44 @@
+{
+  "name": "newism/craft-uxcomponents",
+  "type": "craft-plugin",
+  "license": "proprietary",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin"
+  ],
+  "authors": [
+    {
+      "name": "Leevi Graham",
+      "email": "leevi@newism.com.au"
+    }
+  ],
+  "support": {
+    "email": "leevi@newism.com.au",
+    "source": "https://github.com/newism/craft-uxcomponents",
+    "issues": "https://github.com/newism/craft-uxcomponents/issues?state=open",
+    "forum": "https://github.com/newism/craft-uxcomponents/discussions",
+    "docs": "https://github.com/newism/craft-uxcomponents/blob/main/README.md"
+  },
+  "require": {
+    "php": ">=8.1",
+    "craftcms/cms": "^4.2.2",
+    "nystudio107/craft-plugin-vite": "^4.0.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Newism\\UxComponents\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "UXComponents",
+    "handle": "uxcomponents"
+  },
+  "config": {
+    "allow-plugins": {
+      "craftcms/plugin-installer": true,
+      "yiisoft/yii2-composer": true
+    }
+  }
+}
