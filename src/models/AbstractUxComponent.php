@@ -8,10 +8,20 @@ use yii\base\InvalidArgumentException;
 
 abstract class AbstractUxComponent extends Model implements UxComponentInterface
 {
-    public array $containerAttrs = [];
+    public array $attrs = [];
 
     /** @var Collection<UxComponentInterface>|null */
     public ?Collection $children = null;
+    
+    public function __construct($config = [])
+    {
+        $attributes = array_flip($this->attributes());
+        $fallthroughAttributes = array_diff_key($config, $attributes);
+        $configAttributes = array_intersect_key($config, $attributes);
+        $configAttributes['attrs'] = $fallthroughAttributes;
+
+        parent::__construct($configAttributes);
+    }
 
     public function __toString(): string
     {

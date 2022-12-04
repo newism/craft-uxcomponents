@@ -43,13 +43,14 @@ class UxComponentRenderer extends Component
 
     public function createUxComponent(string $name, array $config = []): UxComponentInterface
     {
+        // TODO: Investigate dependency injection: https://www.yiiframework.com/doc/guide/2.0/en/concept-di-container#php-callable-injection
         try {
-            $config['class'] = $this->typesKeyedByName[$name];
+            $class = $this->typesKeyedByName[$name];
         } catch (\Exception $exception) {
             throw new \InvalidArgumentException(sprintf('Unknown component "%s". The registered components are: %s', $name, implode(', ', array_keys($this->typesKeyedByName))));
         }
         
-        return \Craft::createObject($config);
+        return new $class($config);
     }
 
     private function renderUxComponent(UxComponentInterface $uxComponent): string
